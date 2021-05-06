@@ -5,7 +5,7 @@ const readline = require('readline').createInterface(
     }
 )
 
-readline.question(`Enter your name : ` , name=>
+readline.question(`Enter your first name : ` , name=>
 {
     console.log(`hi ${name} !`);
     readline.close();
