@@ -18,22 +18,16 @@ function subset(arr1,arr2,m,n)
     }
 }
 
-let arr1 = [[11, 1, 13],[21, 3, 7],[20,5,32]];
-let arr2 = [[11, 3],[7, 1]];
+let arr1 = [[11, 1, 13],
+            [21, 3, 7],
+            [20,5,32]];
+
+let arr2 = [[11, 3],
+            [7, 1]];
 
 let m = arr1.length;
-console.log(m);
-//console.log(arr1);
-
-for(let i = 0;i<3;i++)
-{
-    for(let j = 0;j<3;j++)
-    {
-        console.log(arr1[i][j]);
-    }
-}
 let n = arr2.length;
-console.log("lenght of arr2 is :" +n);
+
 
 if(subset(arr1,arr2,m,n))
 {
