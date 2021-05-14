@@ -98,6 +98,7 @@ app.get('/edit/:id',function(req,res,next) // '/edit/:id' is from the index.ejs 
 // send to updated data browser to the database
 app.post('/update/',(req,res,next)=>
 {
+    
     var id = req.body.id;
     var name = req.body.name;
     var task = req.body.task;
@@ -134,8 +135,21 @@ app.get('/delete/:id',function(req,res,next)
         res.redirect('/'); // redirect to the url 
     })
 });
+//to adding a search functionalities
 
+app.get('/search',function(req,res)
+{
+    var searchquery = 'SELECT * from `task` where `name` like "%'+req.query.search+'%"';
+    console.log(searchquery);
+    con.query(searchquery,function(err,result)
+    {
+        res.render('index',{
+            records : result
 
+        });
+    })
+})
+ 
 //creating a server into the browser to execute the js file
 app.listen(port,()=>
 {
