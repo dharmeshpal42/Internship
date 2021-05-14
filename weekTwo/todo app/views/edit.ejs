@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="../assests/style.css">
+</head>
+<body>
+
+    <div class = "task">
+        <h2>TO-Do Application</h2>
+        <form action ="/update/" method="POST">
+        <input type="hidden" name ="id" value = "<%= records.id %>">
+        <input type = "text" name = "name" value = "<%= records.name %>" placeholder = "Enter Name">  
+        <input type = "text" name = "task" value = "<%= records.task_name %>"placeholder = "Enter the task">
+        <input type = "text" name = "description" value = "<%= records.task_description %>" placeholder = "enter description of task"> 
+        <input type = "date" value = "<%= records.date %>" name = "date">  
+        <input type = "time" value = "<%= records.time %>" name = "time"> 
+        <input type = "submit" value = "Update">
+        </form>
+    </div>
+    <br>
+</body>
+</html>

@@ -1,0 +1,91 @@
+.task form
+{
+    width: 300px;
+    margin: 0 auto;
+    font-family: Tahoma, Geneva, sans-serif;
+}
+.task h2{
+    text-align: center;
+    color: #4d4d4d;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+}
+
+.task input[type = "text"]
+{
+            width: 100%;
+			padding: 10px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+}
+.task input[type = "date"]
+{
+            width: 100%;
+			padding: 10px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+}
+.task input[type = "time"]
+{
+            width: 100%;
+			padding: 10px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+}
+
+.task input[type = "submit"]
+{
+            width: 100%;
+			padding: 15px;
+			background-color: #535b63;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #ffffff;
+}
+
+.alltask table
+{
+    width: 1000px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+.alltask table th{
+    padding: 10px;
+    text-align: center;
+   
+}
+.alltask table td{
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+   
+}
+.alltask input[type = "button"]
+{
+    padding: 8px;
+    width: 100%;
+    font-weight: bold;
+	color: #ffffff;
+    background-color: #535b63;
+}
+.alltask input[type = "button"]
+{
+    padding: 8px;
+    width: 100%;
+    font-weight: bold;
+	color: #0c0000;
+    background-color: #3995c0;
+}
+.alltask input[type = "reset"]
+{
+    padding: 8px;
+    width: 100%;
+    font-weight: bold;
+	color: #110202;
+    background-color: #eb1d1d;
+}

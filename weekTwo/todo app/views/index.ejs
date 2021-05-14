@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="../assests/style.css">
+</head>
+<body>
+
+    
+    <div class = "task">
+        <h2><u>TO-Do Application</u></h2>
+        <form method ="POST">
+        <input type = "text" name = "name" placeholder = "Enter Name">  
+        <input type = "text" name = "task" placeholder = "Enter the task">
+        <input type = "text" name = "description" placeholder = "enter description of task"> 
+        <input type = "date" name = "date">  
+        <input type = "time" name = "time"> 
+        <input type = "submit">
+       
+        </form>
+    </div>
+    <br>
+    <br>
+    <div class="alltask">
+        <table border>
+            <thead>
+                <tr>
+                     <th>Name</th>
+                     <th>Task name</th>
+                     <th>Task description</th>
+                     <th>Date</th>
+                     <th>Time</th>
+                     <th>Edit</th>
+                     <th>Delete</th>
+                    </tr>
+                    </thead>
+                <tbody>
+                    <% records.forEach(function(row){ %>   <!-- records is ab object of POST Request from index.js-->
+            <tr>
+                <td><%= row.name %></td>           <!-- name are same as db columns name-->
+                <td><%= row.task_name %></td>
+                <td><%= row.task_description %></td>
+                <td><%= row.date %></td>
+                <td><%= row.time %></td>
+                <td><a  href = "/edit/<%= row.id %>"><!--here edit use in js file to give id to db --><input type = "button" value = "Edit"></a></td>
+                <td><a href = "/delete/<%= row.id %>"><input type = "reset"  value = "Delete"></a></td>
+            </tr>
+            <% }); %>
+                </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
