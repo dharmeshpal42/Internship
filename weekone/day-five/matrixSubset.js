@@ -1,39 +1,20 @@
-function subset(arr1,arr2,m,n)
-{
-    let i = 0;
-    let j = 0;
 
-    for(i = 0;i<n;i++)
-    {
-        for(j = 0;j<m;j++)
-        {
-            if(arr2[i] == arr1[j])
-            
-                break;
-                
-            if(j == m)
-            return false;
-        }
-        return true;
+var md1 = [[1,2,3],[4,5,6],[6,7,8]];
+var md2 = [[2,3],[4,5]];
+
+let subset = false;
+for(var x = 0; x < md1.length; x++){ 
+    for(var y = 0; y < md2.length; y++){
+      if(md1[x][0] == md2[y][0] && md1[x][1] == md2[y][1]){
+        subset = true;
+      }
     }
 }
-
-let arr1 = [[11, 1, 13],
-            [21, 3, 7],
-            [20,5,32]];
-
-let arr2 = [[11, 3],
-            [7, 1]];
-
-let m = arr1.length;
-let n = arr2.length;
-
-
-if(subset(arr1,arr2,m,n))
+if(subset == true)
 {
-    console.log("the arr2 is subset of arr1");
+    console.log("md2 is subset of md1");
 }
 else
 {
-    console.log("the arr2 is not subset of arr1");
+    console.log("md2 is not subset of md1");
 }
