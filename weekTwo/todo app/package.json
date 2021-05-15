@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  
   "author": "dharmesh pal",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-validator": "^6.11.1",
     "mysql": "^2.18.1"
   }
 }

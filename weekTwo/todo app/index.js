@@ -5,6 +5,8 @@ const mysql = require('mysql');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const path  = require('path');
+const{check,validationResult} = require('express-validator');
+
 
 
 
@@ -32,11 +34,12 @@ app.set('views',path.join(__dirname,'views'));
 //set view engine
 app.set("view engine","ejs");
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 
 
 // to show the list of data into table form which from database
+
 app.get('/',(req,res)=>
 {
     var getQuery = "select * from `task`";
@@ -53,30 +56,54 @@ console.log(result);
 });
 
 // get the data from browser to database
-app.post('/',(req,res,next)=>
+//added a validation in the form
+app.post('/',[
+    check('name','Please Filled a Name column')
+    .notEmpty(),
+    check('task','Task Column not Filled ')
+    .notEmpty(),
+    check('description','Enter The Description of Task')
+    .notEmpty(),
+    check('date','Enter the Date')
+    .notEmpty(),
+    check('time','Enter The Time')
+    .notEmpty()
+],(req,res,next)=>
 {
-    var name = req.body.name;
-    var task = req.body.task;
-    var description = req.body.description;
-    var date = req.body.date;
-    var time = req.body.time;
-
-    console.log("here date is :"+date);
-    console.log("here time is :"+time);
-    var insertQuery = 'insert into`task`(`name`,`task_name`,`task_description`,`date`,`time`)VALUES(?,?,?,?,?)';
-    var query = mysql.format(insertQuery,[name,task,description,date,time]);
-    con.query(query,function(err,response)
-    {
-        if(err) throw err;
-        console.log(response);
+     const errors = validationResult(req)
+     console.log(errors.mapped());
+     if(!errors.isEmpty())
+     {
+        // return res.status(422).jsonp(errors.array());
+        const alert = errors.array() 
         var getQuery = "select * from `task`";
-       con.query(getQuery,function(err,result)
-       {
-        if(err) throw err;
-        res.render('index',{records :result});
-    })
-});
-});
+        con.query(getQuery,function(err,result){
+         if(err) throw err;
+         res.render('index',{records :result,alert});
+        })   
+     }
+     else{
+     var name = req.body.name;
+     var task = req.body.task;
+     var description = req.body.description;
+     var date = req.body.date;
+     var time = req.body.time;
+ 
+     console.log("here date is :"+date);
+     console.log("here time is :"+time);
+     var insertQuery = 'insert into`task`(`name`,`task_name`,`task_description`,`date`,`time`)VALUES(?,?,?,?,?)';
+     var query = mysql.format(insertQuery,[name,task,description,date,time]);
+     con.query(query,function(err,response) {
+         if(err) throw err;
+         console.log(response);
+         var getQuery = "select * from `task`";
+        con.query(getQuery,function(err,result){
+         if(err) throw err;
+         res.render('index',{records :result});
+        })
+     })
+    }
+ });
 
 //get the data from databse to browser
 app.get('/edit/:id',function(req,res,next) // '/edit/:id' is from the index.ejs file to get the data of the ID 
@@ -135,8 +162,9 @@ app.get('/delete/:id',function(req,res,next)
         res.redirect('/'); // redirect to the url 
     })
 });
-//to adding a search functionalities
 
+
+//to adding a search functionalities
 app.get('/search',function(req,res)
 {
     var searchquery = 'SELECT * from `task` where `name` like "%'+req.query.search+'%"';
@@ -155,3 +183,7 @@ app.listen(port,()=>
 {
     console.log(`app listnening on port ${port}`)
 });
+
+
+  
+   
