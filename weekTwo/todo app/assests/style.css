@@ -79,15 +79,15 @@
     width: 100%;
     font-weight: bold;
 	color: #0c0000;
-    background-color: #3995c0;
+    background-color: #a6dbf3;
 }
 .alltask input[type = "reset"]
 {
     padding: 8px;
     width: 100%;
     font-weight: bold;
-	color: #110202;
-    background-color: #eb1d1d;
+	color: #f7f5f5;
+    background-color: #af1919;
 }
 .searchbar form
 {

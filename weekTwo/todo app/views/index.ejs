@@ -32,6 +32,9 @@
         </form>
     </div>
     <br><br><br>
+
+
+    <!-- Implement search function in -->
     <div class = "searchbar">
         <form action= "/search" >
             <input name="search" placeholder="enter your name" type="text" />
@@ -39,6 +42,9 @@
         </form>
     </div>
     <br><br><br>
+
+
+
     <div class="alltask">
         <table border>
             <thead>
@@ -65,8 +71,18 @@
             </tr>
             <% }); %>
                 </tbody>
+                
         </table>
     </div>
+    <br>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <% var page = Math.ceil(countData.name/dataLimit) ; console.log(countData.name,dataLimit ,'this from server side') %>
+            <%  for(var i = 1; i<=page ; i++) { %>
+          <li class="page-item"><a class="page-link" href="/?page=<%= i %>"><%= i %></a></li>
+         <% } %>
+        </ul>
+      </nav>
     
 </body>
 </html>
